@@ -10,7 +10,7 @@ This project is ideal for:
 
 ---
 
-##Features
+## Features
 
 ### **Amazon Scraper (TLS-Fingerprint Based)**
 - Mimics real browser TLS signatures using `tls-client`
@@ -36,4 +36,24 @@ This project is ideal for:
 ---
 
 ## 🧱 Project Structure
+pip install -r requirements.txt
+python main.py --import-csv products_sample.csv
+streamlit run dashboard/app.py
+python main.py --loop --interval-minutes 30
 
+### **Alert Examples:**
+
+**Price Drop Alert:**
+```
+🎉 Price Drop Alert!
+Echo Dot (4th Gen) is now $25.99 (target: $29.99)
+You Save: $4.00
+View on Amazon →
+```
+
+**Stock Alert:**
+```
+📦 Stock Alert!
+Fire TV Stick 4K is now In Stock!
+Current Price: $39.99
+View on Amazon →
