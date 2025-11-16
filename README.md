@@ -36,10 +36,10 @@ This project is ideal for:
 ---
 
 ## 🧱 Project Structure
-pip install -r requirements.txt
-python main.py --import-csv products_sample.csv
-streamlit run dashboard/app.py
-python main.py --loop --interval-minutes 30
+- pip install -r requirements.txt
+- python main.py --import-csv products_sample.csv
+- streamlit run dashboard/app.py
+- python main.py --loop --interval-minutes 30
 
 ### **Alert Examples:**
 
