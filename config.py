@@ -1,17 +1,46 @@
-# config.py
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 # Base settings
-BASE_URL = "https://www.amazon.com/dp/"
+BASE_URL = "https://www.amazon.com"
 RETRY_COUNT = 3
 RETRY_BACKOFF = 3
 
 # File paths
 CSV_PATH = os.path.join("data", "history.csv")
 PRODUCTS_DB_PATH = os.path.join("data", "products.json")
+
+# ==============================================
+# PROXY SETTINGS (CRITICAL FOR NON-US LOCATIONS)
+# ==============================================
+# Enable proxy to bypass geographical restrictions
+PROXY_ENABLED = os.getenv("PROXY_ENABLED", "false").lower() == "true"
+
+# Option 1: Single proxy
+# e.g., "http://username:password@proxy-server:port"
+PROXY_HTTP = os.getenv("PROXY_HTTP")
+# e.g., "http://username:password@proxy-server:port"
+PROXY_HTTPS = os.getenv("PROXY_HTTPS")
+
+# Option 2: Rotating proxy list (if you have multiple proxies)
+PROXY_LIST = os.getenv("PROXY_LIST", "").split(
+    ",") if os.getenv("PROXY_LIST") else []
+# Example: PROXY_LIST=http://proxy1:port,http://proxy2:port,http://proxy3:port
+
+# Option 3: Premium proxy services (recommended)
+# ScraperAPI
+SCRAPERAPI_ENABLED = os.getenv("SCRAPERAPI_ENABLED", "false").lower() == "true"
+# Get from https://www.scraperapi.com/
+SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY")
+
+# Bright Data (formerly Luminati)
+BRIGHTDATA_ENABLED = os.getenv("BRIGHTDATA_ENABLED", "false").lower() == "true"
+BRIGHTDATA_USERNAME = os.getenv("BRIGHTDATA_USERNAME")
+BRIGHTDATA_PASSWORD = os.getenv("BRIGHTDATA_PASSWORD")
+BRIGHTDATA_HOST = os.getenv("BRIGHTDATA_HOST", "brd.superproxy.io")
+BRIGHTDATA_PORT = os.getenv("BRIGHTDATA_PORT", "22225")
 
 # Rotate between multiple realistic user agents
 HEADERS_LIST = [
